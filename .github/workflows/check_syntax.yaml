@@ -1,4 +1,4 @@
-name: check_python_version
+name: check_syntax
 
 on:
   push: 
@@ -22,3 +22,5 @@ jobs:
         run: apt install flake8
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+      - name: Use flake8
+        run: flake8
