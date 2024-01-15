@@ -1,0 +1,24 @@
+name: check_python_version
+
+on:
+  push: 
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{matrix.python-version}}
+      - name: Update pip
+        run: apt install pip
+      - name: Install flake8
+        run: apt install flake8
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
