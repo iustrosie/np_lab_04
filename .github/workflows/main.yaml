@@ -31,7 +31,7 @@ jobs:
       - name: setup up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ pmatrix.python-version}}
+          python-version: ${{ matrix.python-version}}
       - name: install dependencies
         run: python -c pip install flake8
       - name: Display Python version
