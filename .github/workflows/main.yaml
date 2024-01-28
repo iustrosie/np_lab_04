@@ -1,0 +1,27 @@
+name: main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.9', '3.10', '3.11']
+        exclude:  
+          - os: ubuntu-latest
+            python-version: '3.10'
+    steps:
+      - uses: actions/checkout@v4
+      - name: install dependencies
+        run: sudo apt install pip flake8 unittest
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: use flake8
+        run: flake8
+      - name: use unittest
+        run: python -m unittest
