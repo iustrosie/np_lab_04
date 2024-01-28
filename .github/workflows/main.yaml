@@ -28,10 +28,11 @@ jobs:
         python-version: ['3.9', '3.10', '3.11']
     steps:
       - uses: actions/checkout@v4
-      - name: install pip
-        run: choco install pip
+      - name: setup up Python ${{ matrix.python-version }}
+        with:
+          python-version: ${{ pmatrix.python-version}}
       - name: install dependencies
-        run: pip install flake8
+        run: python -c pip install flake8
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: use flake8
