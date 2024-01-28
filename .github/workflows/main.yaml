@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-
   job1:
     build:
       runs-on: ubuntu-latest
