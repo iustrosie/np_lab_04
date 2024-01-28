@@ -6,35 +6,37 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ['3.9', '3.11']
-    steps:
-      - uses: actions/checkout@v4
-      - name: install dependencies
-        run: sudo apt install pip flake8
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
-      - name: use flake8
-        run: flake8
-      - name: use unittest
-        run: python -m unittest
 
-jobs:
-  build:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        python-version: ['3.9', '3.10', '3.11']
-    steps:
-      - uses: actions/checkout@v4
-      - name: install dependencies
-        run: choco install pip flake8
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
-      - name: use flake8
-        run: flake8
-      - name: use unittest
-        run: python -m unittest
+  job1:
+    build:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          python-version: ['3.9', '3.11']
+      steps:
+        - uses: actions/checkout@v4
+        - name: install dependencies
+          run: sudo apt install pip flake8
+        - name: Display Python version
+          run: python -c "import sys; print(sys.version)"
+        - name: use flake8
+          run: flake8
+        - name: use unittest
+          run: python -m unittest
+
+  job2:
+    build:
+      runs-on: windows-latest
+      strategy:
+        matrix:
+          python-version: ['3.9', '3.10', '3.11']
+      steps:
+        - uses: actions/checkout@v4
+        - name: install dependencies
+          run: choco install pip flake8
+        - name: Display Python version
+          run: python -c "import sys; print(sys.version)"
+        - name: use flake8
+          run: flake8
+        - name: use unittest
+          run: python -m unittest
