@@ -3,7 +3,7 @@ name: check_syntax
 on:
   push: 
     branches:
-      - main
+      - check_syntax
 jobs:
   build:
     runs-on: ubuntu-latest
